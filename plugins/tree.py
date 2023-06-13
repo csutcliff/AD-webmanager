@@ -148,7 +148,7 @@ def init(app):
         """
         result = []
         attr_list = [
-            'name', 'showInAdvancedViewOnly', 'objectType', 'objectGUID', 'distinguishedName'
+            'name', 'showInAdvancedViewOnly', 'objectClass', 'objectGUID', 'distinguishedName', 'sAMAccountName', 'userAccountControl'
         ]
         for attr_pair in Settings.TREE_ATTRIBUTES:
             attr_list.append(attr_pair[0])
@@ -213,17 +213,17 @@ def init(app):
             key2 = x.split("type:'")[1].split("'")[0] #User, Group, Organization Unit, Container
             key3 = x.split("target:'")[1].replace("'}", "")
             key4 = parse.unquote(key3.split("/")[2]) #username
-            if key2 == "User":
+            if key2 == "user":
                 user = ldap_get_user(username=key4)
                 key5 = user['distinguishedName']
-            elif key2 == "Group":
+            elif key2 == "group":
                 group = ldap_get_group(groupname=key1)
                 key5 = group['distinguishedName']
-            elif key2 == "Organization Unit":
+            elif key2 == "organizationalUnit":
                 key5 = parse.unquote(key4)
             dicts['name'] = key1
             dicts['type'] = key2
-            if key2 != 'Organization Unit':
+            if key2 != 'organizationalUnit':
                 dicts['username'] = key4
             dicts['dn'] = key5
             translated.append(dicts)
