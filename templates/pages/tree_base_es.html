@@ -64,19 +64,19 @@
                     <td class="table-name-column">
                         <input type="checkbox" name="checkedItems" class="item-to-check form-check-input"
                             onclick="boxClicked();" data-reference-name="{{ entry[key] }}"
-                            data-reference-type="{{ entry['__type'] }}"
-                            value="{name:'{{ entry[key] }}', type:'{{ entry['__type'] }}', target:'{{ entry['__target'] }}'}">
+                            data-reference-type="{{ entry['organizationalUnit'] }}"
+                            value="{name:'{{ entry[key] }}', type:'{{ entry['organizationalUnit'] }}', target:'{{ entry['__target'] }}'}">
 
                         <a href="{{ entry['__target'] }}">{{ entry[key] }}</a>
 
-                        {% if entry['__type'] == "Organization Unit" or entry['__type']== "Container" %}
+                        {% if entry['organizationalUnit'] == "Organization Unit" or entry['organizationalUnit']== "Container" %}
                         <input type="radio" name="moveHere" class="move-here-element" value="{{ entry['__target'] }}"
                             style="display: none;" data-reference-name="{{ entry[key] }}" onclick="radioClicked()">
                         <label for="moveHere" class="move-here-element move-here-span"
                             style="display: none; padding: 0;">here</label>
                         {% endif %}
                     </td>
-                    {% elif key == "__type" and key in entry %}
+                    {% elif key == "organizationalUnit" and key in entry %}
                     <td>{{ entry[key] }}</td>
                     {% elif key in entry %}
                     <td>{{ entry[key]|truncate(40) }}</td>
