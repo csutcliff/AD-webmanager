@@ -23,6 +23,6 @@ class Settings:
         ["jpegPhoto", "Photo"],
     ]
     TREE_ATTRIBUTES = [
-        ['mail', "Email"], ['__type', "Type"], ['active', "Status"]
+        ['mail', "Email"], ['objectClass', "Type"], ['active', "Status"]
     ]
     TIMEZONE = "Your/Timezone"
