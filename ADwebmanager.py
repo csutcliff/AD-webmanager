@@ -120,7 +120,7 @@ def pre_request():
         Setup any of the global variables before the request is processed.
     """
     g.menu = []
-    g.menu.append((url_for("core_index"), "Mi Account"))
+    g.menu.append((url_for("core_index"), "My Account"))
     g.menu.append((url_for("tree_base"), u"Directory"))
     g.menu.append((url_for("core_logout"), "Log out"))
 
